@@ -1,0 +1,27 @@
+# Laravel defaults
+/vendor
+/node_modules
+/.env
+/.env.*
+/public/hot
+/public/storage
+/public/build
+/storage/*.key
+/storage/app/public
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/views
+/storage/logs/*.log
+/bootstrap/cache/*.php
+
+# IDE/editor
+.DS_Store
+.idea/
+.vscode/
+.fleet/
+
+# Misc
+/npm-debug.log
+/yarn-error.log
+/.phpunit.result.cache
+/coverage
