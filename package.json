@@ -18,5 +18,8 @@
         "@inertiajs/progress": "^0.2.7",
         "@inertiajs/vue3": "^2.2.7",
         "vue": "^3.5.22"
+    },
+    "engines": {
+        "node": ">=20.19.0"
     }
 }
