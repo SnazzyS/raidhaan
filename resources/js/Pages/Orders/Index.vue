@@ -4,6 +4,7 @@ import { Link } from '@inertiajs/vue3';
 import axios from 'axios';
 import AppLayout from '../../Layouts/AppLayout.vue';
 import { useAuthStore } from '../../stores/auth.js';
+import { printOrderReceipt } from '../../services/printService.js';
 
 const auth = useAuthStore();
 
@@ -11,6 +12,7 @@ const orders = ref([]);
 const loading = ref(false);
 const error = ref('');
 const updatingOrderId = ref(null);
+const printingOrderId = ref(null);
 
 const filters = reactive({
     search: '',
@@ -146,6 +148,18 @@ const deleteOrder = async (orderId) => {
     } catch (requestError) {
         error.value =
             requestError.response?.data?.message ?? 'Failed to delete the order.';
+    }
+};
+
+const handlePrint = async (orderId) => {
+    printingOrderId.value = orderId;
+
+    try {
+        await printOrderReceipt(orderId);
+    } finally {
+        if (printingOrderId.value === orderId) {
+            printingOrderId.value = null;
+        }
     }
 };
 
@@ -384,6 +398,14 @@ onMounted(async () => {
                                         >
                                             Receipt
                                         </a>
+                                        <button
+                                            type="button"
+                                            class="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900 disabled:opacity-60"
+                                            :disabled="printingOrderId === order.id"
+                                            @click="handlePrint(order.id)"
+                                        >
+                                            {{ printingOrderId === order.id ? 'Printing…' : 'Print' }}
+                                        </button>
                                         <button
                                             type="button"
                                             class="rounded-lg border border-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-slate-300 hover:text-slate-900 disabled:opacity-60"
