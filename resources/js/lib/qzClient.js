@@ -1,5 +1,34 @@
-const qzEnabled = import.meta.env.VITE_QZ_ENABLED === 'true';
-const qzPrinterName = import.meta.env.VITE_QZ_PRINTER_NAME ?? '';
+// Hard-coded defaults so printing works out-of-the-box without relying on .env.
+const FORCE_QZ_ENABLED = true;
+const FORCE_QZ_PRINTER_NAME = 'ZKP8008';
+
+const qzEnabled = (() => {
+    if (FORCE_QZ_ENABLED === true) {
+        return true;
+    }
+
+    if (FORCE_QZ_ENABLED === false) {
+        return false;
+    }
+
+    return import.meta.env.VITE_QZ_ENABLED === 'true';
+})();
+
+const qzPrinterName = (() => {
+    if (
+        typeof FORCE_QZ_PRINTER_NAME === 'string' &&
+        FORCE_QZ_PRINTER_NAME.trim().length > 0
+    ) {
+        return FORCE_QZ_PRINTER_NAME.trim();
+    }
+
+    const envPrinter = import.meta.env.VITE_QZ_PRINTER_NAME;
+    if (typeof envPrinter === 'string' && envPrinter.trim().length > 0) {
+        return envPrinter.trim();
+    }
+
+    return '';
+})();
 
 let qzReadyPromise = null;
 
