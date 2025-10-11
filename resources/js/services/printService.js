@@ -6,23 +6,45 @@ const openBrowserPrintDialog = (html) => {
         return false;
     }
 
-    const printWindow = window.open('', '_blank', 'noopener,noreferrer');
+    const iframe = document.createElement('iframe');
+    iframe.style.position = 'fixed';
+    iframe.style.right = '0';
+    iframe.style.bottom = '0';
+    iframe.style.width = '0';
+    iframe.style.height = '0';
+    iframe.style.border = '0';
+    iframe.setAttribute('sandbox', 'allow-modals allow-same-origin allow-scripts');
 
-    if (!printWindow) {
-        console.warn('[PrintService] Unable to open browser print window (blocked by popup policy)');
+    document.body.appendChild(iframe);
+
+    const iframeWindow = iframe.contentWindow;
+    const iframeDocument = iframeWindow?.document;
+
+    if (!iframeWindow || !iframeDocument) {
+        document.body.removeChild(iframe);
+        console.warn('[PrintService] Unable to access iframe document for printing');
         return false;
     }
 
-    printWindow.document.open();
-    printWindow.document.write(html);
-    printWindow.document.close();
-    printWindow.focus();
+    iframeDocument.open();
+    iframeDocument.write(html);
+    iframeDocument.close();
 
-    // Give the browser a moment to render before invoking print
-    setTimeout(() => {
-        printWindow.print();
-        printWindow.close();
-    }, 50);
+    const triggerPrint = () => {
+        iframeWindow.focus();
+        iframeWindow.print();
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 500);
+    };
+
+    if (iframeDocument.readyState === 'complete') {
+        triggerPrint();
+    } else {
+        iframe.onload = triggerPrint;
+        // Failsafe in case onload never fires (some browsers)
+        setTimeout(triggerPrint, 300);
+    }
 
     return true;
 };
