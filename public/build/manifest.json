@@ -1,22 +1,29 @@
 {
-  "_AppLayout-DcxM-feb.js": {
-    "file": "assets/AppLayout-DcxM-feb.js",
+  "_AppLayout-B2UAWK0X.js": {
+    "file": "assets/AppLayout-B2UAWK0X.js",
     "name": "AppLayout",
     "imports": [
       "resources/js/app.js",
-      "_auth-CcBkgkiN.js"
+      "_auth-DZAe1vs3.js"
     ]
   },
-  "_OrderForm-BYNa3UUM.js": {
-    "file": "assets/OrderForm-BYNa3UUM.js",
+  "_OrderForm-DyvQ0kys.js": {
+    "file": "assets/OrderForm-DyvQ0kys.js",
     "name": "OrderForm",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_auth-CcBkgkiN.js": {
-    "file": "assets/auth-CcBkgkiN.js",
+  "_auth-DZAe1vs3.js": {
+    "file": "assets/auth-DZAe1vs3.js",
     "name": "auth",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_printService-MRPzWkE2.js": {
+    "file": "assets/printService-MRPzWkE2.js",
+    "name": "printService",
     "imports": [
       "resources/js/app.js"
     ]
@@ -27,96 +34,98 @@
     "isEntry": true
   },
   "resources/js/Pages/Auth/Login.vue": {
-    "file": "assets/Login-DZN8nsn8.js",
+    "file": "assets/Login-Csbisluv.js",
     "name": "Login",
     "src": "resources/js/Pages/Auth/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_auth-CcBkgkiN.js"
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/Pages/Categories/Index.vue": {
-    "file": "assets/Index-Butbp8JA.js",
+    "file": "assets/Index-CAwLJO4l.js",
     "name": "Index",
     "src": "resources/js/Pages/Categories/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/Pages/Dashboard/Overview.vue": {
-    "file": "assets/Overview-BIqYyzmD.js",
+    "file": "assets/Overview-CDKzyc51.js",
     "name": "Overview",
     "src": "resources/js/Pages/Dashboard/Overview.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/Pages/Items/Index.vue": {
-    "file": "assets/Index-D84qb53n.js",
+    "file": "assets/Index-BIBNh8_f.js",
     "name": "Index",
     "src": "resources/js/Pages/Items/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/Pages/Orders/Create.vue": {
-    "file": "assets/Create-Lfm8beQl.js",
+    "file": "assets/Create-0Tu9fAOx.js",
     "name": "Create",
     "src": "resources/js/Pages/Orders/Create.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_OrderForm-BYNa3UUM.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_OrderForm-DyvQ0kys.js",
+      "_auth-DZAe1vs3.js",
+      "_printService-MRPzWkE2.js"
     ]
   },
   "resources/js/Pages/Orders/Edit.vue": {
-    "file": "assets/Edit-BCpTlWhB.js",
+    "file": "assets/Edit-Beu7cNzD.js",
     "name": "Edit",
     "src": "resources/js/Pages/Orders/Edit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_OrderForm-BYNa3UUM.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_OrderForm-DyvQ0kys.js",
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/Pages/Orders/Index.vue": {
-    "file": "assets/Index-DK-6fxnx.js",
+    "file": "assets/Index-u_awJRKH.js",
     "name": "Index",
     "src": "resources/js/Pages/Orders/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_auth-DZAe1vs3.js",
+      "_printService-MRPzWkE2.js"
     ]
   },
   "resources/js/Pages/Sales/Index.vue": {
-    "file": "assets/Index-CmF_4ll1.js",
+    "file": "assets/Index-DLXGgIET.js",
     "name": "Index",
     "src": "resources/js/Pages/Sales/Index.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_AppLayout-DcxM-feb.js",
-      "_auth-CcBkgkiN.js"
+      "_AppLayout-B2UAWK0X.js",
+      "_auth-DZAe1vs3.js"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DDIZjqGS.js",
+    "file": "assets/app-Cde2bS3R.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,

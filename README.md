@@ -7,6 +7,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Electron Shell
+
+The project now ships with an Electron wrapper so printing can be handled natively without relying on browser plug-ins.
+
+- Copy `.env.example` to `.env`. The desktop shell now defaults to loading the live Laravel Cloud instance at `https://raidhaan-main-d9r7ay.laravel.cloud/orders`. Switch `ELECTRON_APP_URL` back to `http://127.0.0.1:8000` only when you need a local backend.
+- Optional overrides:
+  - `ELECTRON_PRINTER_NAME` can be set to the exact system printer name to enable silent printing.
+  - `ELECTRON_SILENT_PRINT=true` forces silent printing even if no printer name is provided.
+- Development:
+  - Start the Laravel backend (for example `php artisan serve --host=127.0.0.1 --port=8000`) and the Vite dev server (`npm run dev`) when working locally.
+  - Launch the desktop shell with `npm run electron:dev`. The window loads `ELECTRON_APP_URL` and uses the IPC bridge for native printing.
+- Production build: `npm run electron:build` generates signed artifacts under `dist-electron/`.
+  - On macOS this produces a `.dmg` image (`Raidhaan-*.dmg`). Distribute the DMG; users drag the app into `/Applications`.
+  - For Windows you must run the same command *on a Windows machine* (or via CI with the Windows runner). The NSIS installer (`Raidhaan Setup *.exe`) installs the app under `%LOCALAPPDATA%\Programs\Raidhaan`. Cross-compiling from macOS requires additional tooling (Wine, Mono, makensis) and is not recommended; use a Windows build agent instead.
+- When Electron is present, the client automatically prefers the native print pipeline and falls back to QZ Tray or the browser dialog if printing fails.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

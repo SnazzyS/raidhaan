@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { isQzEnabled, printHtml } from '../lib/qzClient';
 
+const canUseElectron = () =>
+    typeof window !== 'undefined' &&
+    typeof window.electron?.printHtml === 'function';
+
 const openBrowserPrintDialog = (html) => {
     if (typeof window === 'undefined') {
         return false;
@@ -57,7 +61,15 @@ export const printOrderReceipt = async (orderId) => {
 
         let printed = false;
 
-        if (isQzEnabled()) {
+        if (canUseElectron()) {
+            try {
+                printed = Boolean(await window.electron.printHtml(data));
+            } catch (error) {
+                console.error('[PrintService] Electron print failed', error);
+            }
+        }
+
+        if (!printed && isQzEnabled()) {
             printed = await printHtml(data);
         }
 
